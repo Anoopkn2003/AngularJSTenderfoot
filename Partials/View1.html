@@ -1,0 +1,22 @@
+﻿<div class="container">
+    <h2>View 1111</h2>
+    <input type="text" data-ng-model="filter.data" />{{filter.data}}
+    
+    
+    <ul>
+        <li data-ng-repeat="mem in Family|filter:filter.data|orderBy:'age'">
+            {{mem.name}} - {{mem.city}} - {{mem.age}}
+        </li>
+    </ul>
+    Member Name:
+    <input type="text" data-ng-model="newMember.name" />
+    Member City:
+    <input type="text" data-ng-model="newMember.city" />
+    Member Age:
+    <input type="text" data-ng-model="newMember.age" />
+    <button data-ng-click="addDynMember()">Add Member</button>
+    <br />
+    <button data-ng-click="addFMember()">Add Member1</button>
+    <br />
+    <a href="#/view2">View 2</a>
+</div>
