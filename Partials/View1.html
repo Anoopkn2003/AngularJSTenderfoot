@@ -1,4 +1,4 @@
-﻿<div class="container" style="white-space:pre;overflow-x:auto;" >
+<div class="container" style="white-space:pre;overflow-x:auto;" >
     <h2>Family Members</h2>
     <input type="text" data-ng-model="filter.data" /> <label style="font-weight: bold;" > Filter Table based on Name,City and Age </label>
     <table>
@@ -11,11 +11,14 @@
     </table>
     <form name="myForm" novalidate>
         New Member Name:
-        <input type="text" data-ng-model="newMember.name" id="txtName" name="txtName" required /> <span style="color:red" ng-show="myForm.txtName.$touched && myForm.txtName.$invalid">Member name is required.</span>
+        <input type="text" data-ng-model="newMember.name" id="txtName" name="txtName" required /> 
+        <span style="color:red" ng-show="myForm.txtName.$touched && myForm.txtName.$invalid">Member name is required.</span>
         Member City:
-        <input type="text" data-ng-model="newMember.city" id="txtCity" name="txtCity" required /> <span style="color:red" ng-show="myForm.txtCity.$touched && myForm.txtCity.$invalid">City name is required.</span>
+        <input type="text" data-ng-model="newMember.city" id="txtCity" name="txtCity" required /> 
+        <span style="color:red" ng-show="myForm.txtCity.$touched && myForm.txtCity.$invalid">City name is required.</span>
         Member Age:
-        <input type="text" data-ng-model="newMember.age" id="txtAge" name="txtAge" required /> <span style="color:red" ng-show="myForm.txtAge.$touched && myForm.txtAge.$invalid">Age is required.</span>
+        <input type="text" data-ng-model="newMember.age" id="txtAge" name="txtAge" required /> 
+        <span style="color:red" ng-show="myForm.txtAge.$touched && myForm.txtAge.$invalid">Age is required.</span>
         <h4 ng-if="myForm.txtName.$invalid || myForm.txtCity.$invalid || myForm.txtAge.$invalid">Please fill new member name,city and age to add to the list</h4>
         <button data-ng-click="addDynMember()"  data-ng-disabled="myForm.$invalid" >Add Member</button>    <button data-ng-click="addMemberFact()" data-ng-disabled="myForm.$invalid">Add Member using Factory</button>
     </form>
