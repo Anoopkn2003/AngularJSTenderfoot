@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html data-ng-app="myApp" id="Main">
 <head>
     <meta charset="utf-8" />
@@ -6,7 +6,7 @@
 </head>
 <body>
     <div data-ng-view></div>
-
+  
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular-route.js"></script>
     <script>
@@ -15,11 +15,11 @@
             $locationProvider.hashPrefix(''); //Required due to Hash Bang #!
             $routeProvider
                 .when('/view1', {
-                    templateUrl: 'Partials/View1.html?d' + Math.random(),
+                    templateUrl: 'Partials/View1.html?d' + Math.random(), // Random query string for caching
                     controller: 'SimpleController'
                 })
                 .when('/view2', {
-                    templateUrl: 'Partials/View2.html?r' + Math.random(),
+                    templateUrl: 'Partials/View2.html?r' + Math.random(), // Random query string for caching
                     controller: 'SimpleController'
                 })
                 .otherwise({ redirectTo: '/view1' });
@@ -32,40 +32,44 @@
                 { name: 'Aaleahya Nair', city: 'Espoo', age: 3 },
                 { name: 'Anvesh Nair', city: 'Espoo', age: 5 }
             ];
-            factory.getMembers = function () { return Family; };
-
+            factory.getMembers = function () { return Family; }; //Instead of hardcoding XHR can be used to fetch data. Next improvement
+            
 
             factory.addFMember = function (name, city,age) {
                 Family.push({ name: name, city: city, age: age });
-
+                
             };
 
             return factory;
         });
 
-        myApp.controller('SimpleController', function ($scope,myFactory) {
-
+        myApp.controller('SimpleController', function ($scope,myFactory) { // Injecting factory into controller function
+           
             $scope.Family = [];
-
+        
             init();
             function init() {
                 $scope.Family = myFactory.getMembers();
             }
 
             $scope.addMember = function () {
-                $scope.Family.push({ name: 'Joyce Mary', city: 'Helsinki', age: 37 });
+                $scope.Family.push({ name: 'Joyce Mary', city: 'Helsinki', age: 37 }); // Hardcoded Push method
             };
 
             $scope.addDynMember = function () {
-                $scope.Family.push({ name: $scope.newMember.name, city: $scope.newMember.city, age: $scope.newMember.age });
+                $scope.Family.push({ name: $scope.newMember.name, city: $scope.newMember.city, age: $scope.newMember.age }); // Dynamic Push but without factory
+                $scope.newMember.name = $scope.newMember.city = $scope.newMember.age = null; // Reset text
             };
 
-            $scope.addMemberFact = function () { myFactory.addFMember($scope.newMember.name, $scope.newMember.city, $scope.newMember.age); };
-
+            $scope.addMemberFact = function () {
+                myFactory.addFMember($scope.newMember.name, $scope.newMember.city, $scope.newMember.age);
+                $scope.newMember.name = $scope.newMember.city = $scope.newMember.age = null; // Reset text
+            }; // Push using factory
+            
         });
 
+    
 
-
-    </script>
+    </script> 
 </body>
 </html>
