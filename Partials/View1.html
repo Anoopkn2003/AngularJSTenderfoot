@@ -1,13 +1,17 @@
-<div class="container" style="white-space:pre;overflow-x:auto;" >
+﻿<div class="container" style="white-space:pre;overflow-x:auto;" >
     <h2>Family Members</h2>
-    <input type="text" data-ng-model="filter.data" /> <label style="font-weight: bold;" > Filter Table based on Name,City and Age </label>
+    <input type="text" data-ng-model="filter.data" /> <label style="font-weight: bold;" > Filter Table based on Name or City or Age </label>
     <table>
         <tr style="background-color: #4CAF50;color: white;">
             <td style="font-weight: bold;">Member Name</td><td style="font-weight: bold;">City</td><td style="font-weight: bold;">Age</td>
         </tr>
-        <tr data-ng-repeat="mem in Family|filter:filter.data|orderBy:'age'">
-            <td>{{mem.name}}</td><td>{{mem.city}}</td><td>{{mem.age}}</td>
-        </tr>
+        
+            <tr data-ng-repeat="mem in Family|filter:filter.data|orderBy:'Age'" >
+                <td data-ng-bind="mem.Name"></td>
+                <td data-ng-bind="mem.City"></td>
+                <td data-ng-bind="mem.Age"></td>
+            </tr>
+        
     </table>
     <form name="myForm" novalidate>
         New Member Name:
@@ -20,10 +24,12 @@
         <input type="text" data-ng-model="newMember.age" id="txtAge" name="txtAge" required /> 
         <span style="color:red" ng-show="myForm.txtAge.$touched && myForm.txtAge.$invalid">Age is required.</span>
         <h4 ng-if="myForm.txtName.$invalid || myForm.txtCity.$invalid || myForm.txtAge.$invalid">Please fill new member name,city and age to add to the list</h4>
-        <button data-ng-click="addDynMember()"  data-ng-disabled="myForm.$invalid" >Add Member</button>    <button data-ng-click="addMemberFact()" data-ng-disabled="myForm.$invalid">Add Member using Factory</button>
+        <button data-ng-click="addMemberFact()" data-ng-disabled="myForm.$invalid">Add New Member</button>
     </form>
     
-        <a href="#/view2">Redirect test</a>
+    <input type="text" data-ng-model="sql" />{{sql}}
+
+        <a href="#/view2">Redirect to another view</a>
 </div>
 <style>
     table {
