@@ -11,8 +11,14 @@ public class FamilyModel
     public string Name;
     public string City;
     public int Age;
+    public int Id;
 
     public FamilyModel()
     {
     }
+}
+
+public class FamilyList
+{
+    public List<FamilyModel> lstFM = new List<FamilyModel>();
 }
