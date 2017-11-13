@@ -1,5 +1,16 @@
 # AngularJSTenderfoot
 Starting with AngularJS
+13 November 2017
+•	Two views – One with grid and one normal view
+•	UI-Grid in use
+•	Add new member
+•	Save updated records
+•	Delete records
+•	Usage of $http
+•	Validation in the grid
+•	Validation on the fields
+•	Alert after update to database
+/*****************************************/
 
 2 Nov
 •	Separated Angular code from HTML page
@@ -14,7 +25,8 @@ Simple page
 •	Listing family members – Name, City and Age
 •	Filter based on Name, City and Age
 •	Addition on new family member
-o	Addition using factory
-o	Addition without factory
+•	Addition using factory
+•	Addition without factory
 •	Required field validation
 •	View navigation
+
