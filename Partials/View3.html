@@ -1,0 +1,59 @@
+﻿<link rel="stylesheet" type="text/css" href="Content/ui-grid-stable.css">
+<link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
+<style>
+    .dirty {
+        background-color: burlywood !important
+    }
+</style>
+<div class="container" >
+    <h2>Family Member Grid</h2>
+    <div class="row">
+        <div class="ui-grid" ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-cellnav ui-grid-validate ui-grid-row-edit >
+        </div>
+    </div>   
+    <div class="row">
+        <div class="col-lg-6">
+            <button data-ng-click="SaveChanges()">Save changed details</button>
+        </div>
+        <div class="col-lg-6">
+            <button data-ng-click="deletMembersFact()">Delete Selected Members</button>
+        </div>
+    </div>
+    <form name="myForm" novalidate class="form-group" >
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 ng-if="myForm.txtName.$invalid || myForm.txtCity.$invalid || myForm.txtAge.$invalid">Please fill new member name,city,age and click "Add New Member" button to add new members</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    Member Name:<input type="text" data-ng-model="newMember.name" id="txtName" name="txtName" required />
+                </div>
+                <div class="col-lg-4">
+                    Member City:<input type="text" data-ng-model="newMember.city" id="txtCity" name="txtCity" required />
+                </div>
+                <div class="col-lg-4">
+                    Member Age:<input type="number" data-ng-model="newMember.age" id="txtAge" name="txtAge" min="0" max="100" required />
+                </div>
+            </div>
+            <div class="row">
+                <div role="alert" class="col-lg-4 alert-danger">
+                    <span class="has-error" ng-show="myForm.txtName.$dirty && myForm.txtName.$invalid">Name is required.</span>
+                </div>
+                <div role="alert" class="col-lg-4 alert-danger">
+                    <span style="color:red" ng-show="myForm.txtCity.$dirty && myForm.txtCity.$invalid">City is required.</span>
+                </div>
+                <div role="alert" class="col-lg-4 alert-danger">
+                    <span ng-show="myForm.txtAge.$dirty && myForm.txtAge.$invalid">Age is required and should be between 0 to 100.</span>
+             
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <button data-ng-click="addMemberFact();myForm.$setPristine()" data-ng-disabled="myForm.$invalid">Add New Member</button>
+            </div>
+            </div>
+</form>
+    <a href="#/view1">Redirect to view without Grid</a>
+</div>
